@@ -20,6 +20,8 @@ class EPDataManager():
 
     def tpc_finish(self, transaction):
         self.connection.commit()
+        self.connection.close()
 
     def tpc_abort(self, transaction):
         self.session.rollback()
+        self.connection.close()

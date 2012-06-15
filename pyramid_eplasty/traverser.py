@@ -1,15 +1,19 @@
+import abc
 from eplasty.object.exc import NotFound
 import weakref
 
-class Traverser():
+class Traverser(metaclass=abc.ABCMeta):
     """Traversers wrap around object classes and allow dictionary-like
     lookup"""
-    
-    def __init__(self, class_, field, session=None):
-        self.class_ = class_
-        self.field = getattr(class_, field)
-        self.session = session
 
+    @abc.abstractproperty
+    def class_(self):
+        pass
+
+    @abc.abstractproperty
+    def field(self):
+        pass
+    
     def mount(self, parent, name):
         self.__parent__ = weakref.proxy(parent)
         self.__name__ = name

@@ -16,8 +16,13 @@ def eplasty_tween_factory(handler, registry):
             connection_factory=ep.cursor.EPConnection
         )
         manager = EPDataManager(conn)
-        transaction.join(manager)
+        request.ep_session = manager.session
+        transaction.get().join(manager)
         return handler(request)
+    return eplasty_tween
 
 def includeme(config):
-    config.add_tween(eplasty_tween_factory)
+    config.add_tween(
+        'pyramid_eplasty.tween.eplasty_tween_factory',
+        under='pyramid_tm.tm_tween_factory'
+    )
