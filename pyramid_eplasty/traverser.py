@@ -6,10 +6,10 @@ class Traverser(metaclass=abc.ABCMeta):
     """Traversers wrap around object classes and allow dictionary-like
     lookup"""
 
-    def __init__(self, class_, field, session=None):
-        self.class_ = class_
-        self.field = field
-        self.session = session
+    def __init__(self, **kwargs):
+        for kwarg in ['class_', 'field', 'session']:
+            if kwarg in kwargs:
+                setattr(self, kwarg, kwargs[kwarg])
     
     def mount(self, parent, name):
         self.__parent__ = weakref.proxy(parent)
