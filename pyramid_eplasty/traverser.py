@@ -24,5 +24,6 @@ class Traverser(metaclass=abc.ABCMeta):
         except NotFound:
             raise KeyError(key)
         result.__parent__ = self
-        result.__name__ = key
+        if not result.__name__:
+            result.__name__ = key
         return result
