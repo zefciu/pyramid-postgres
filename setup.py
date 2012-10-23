@@ -7,13 +7,12 @@ setup(
       author = 'Szymon Pyżalski',
       author_email = 'zefciu <szymon@pythonista.net>',
       description =
-        'Include this in a pyramid project to get elephantoplasty support',
+        'Include this in a pyramid project to get postgres transactions',
       license = 'BSD',
-      url = 'http://github.com/zefciu/Elephantoplasty',
-      keywords = 'orm postgresql psql pg persistence sql relational database',
+      keywords = 'postgresql psql pg persistence sql relational database',
       
-      install_requires = ['pyramid>=1.2', 'Elephantoplasty>=0.0.2'],
-      packages = ['pyramid_eplasty'],
+      install_requires = ['pyramid>=1.2', 'psycopg2'],
+      packages = ['pyramid_postgres'],
       classifiers = [
           'Development Status :: 2 - Pre-Alpha',
           'Intended Audience :: Developers',
