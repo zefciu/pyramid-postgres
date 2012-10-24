@@ -1,6 +1,8 @@
 from psycopg2 import connect
 import transaction
 
+from pyramid_postgres.connection import PostgresManager
+
 
 def eplasty_tween_factory(handler, registry):
     def eplasty_tween(request):
@@ -12,8 +14,8 @@ def eplasty_tween_factory(handler, registry):
             user = config['postgres.username'],
             password = config['postgres.passwd'],
         )
-        request.pg_transaction = conn
-        transaction.roin(manager)
+        request.pg_connection = conn
+        transaction.get().join(PostgresManager(conn))
         return handler(request)
     return eplasty_tween
 

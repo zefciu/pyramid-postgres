@@ -2,7 +2,7 @@
 from setuptools import setup
 
 setup(
-      name = 'pyramid_eplasty',
+      name = 'pyramid_postgres',
       version = '0.0.1',
       author = 'Szymon Pyżalski',
       author_email = 'zefciu <szymon@pythonista.net>',

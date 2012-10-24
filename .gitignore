@@ -1,5 +1,5 @@
 __pycache__
 build/
 dist/
-pyramid_eplasty.egg-info/
+pyramid_postgres.egg-info/
 *.swp
