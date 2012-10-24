@@ -15,7 +15,9 @@ def eplasty_tween_factory(handler, registry):
             password = config['postgres.passwd'],
         )
         request.pg_connection = conn
-        transaction.get().join(PostgresManager(conn))
+        transaction.get().join(PostgresManager(
+            conn, tpc=config.get('postgres.tpc', False)
+        ))
         return handler(request)
     return eplasty_tween
 
