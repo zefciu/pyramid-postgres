@@ -11,7 +11,7 @@ setup(
       license = 'BSD',
       keywords = 'postgresql psql pg persistence sql relational database',
       
-      install_requires = ['pyramid>=1.2', 'psycopg2'],
+      install_requires = ['pyramid>=1.2', 'psycopg2', 'pyramid-tm'],
       packages = ['pyramid_postgres'],
       classifiers = [
           'Development Status :: 2 - Pre-Alpha',
