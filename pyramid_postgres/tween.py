@@ -1,5 +1,5 @@
 import logging
-from psycopg2 import connect, extensions
+from psycopg2 import connect, extensions, extras
 import transaction
 
 from pyramid_postgres.connection import PostgresManager
@@ -10,7 +10,7 @@ def _hide_problematic(item):
         return '<{0} BYTES>'.format(len(item))
     return item
 
-class LoggingCursor(extensions.cursor):
+class LoggingCursor(extras.NamedTupleCursor):
 
     def __init__(self, *args, **kwargs):
         self.sql_logger = logging.getLogger('sql')
